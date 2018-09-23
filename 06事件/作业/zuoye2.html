@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示隐藏</title>
+</head>
+<style>
+    .hide {
+        display: none;
+    }
+    .xianshi {
+        display: inline-block;
+    }
+    td {
+        width: 100px;
+        height: 20px;
+    }
+</style>
+<body>
+<table border="1px">
+    <tr><td class="one">姓名 <button id="button" onclick="none_block()">隐藏</button></td><td class="xianshi">性别</td><td class="xianshi">年龄</td></tr>
+    <tr><td class="one">张三</td><td class="xianshi">女</td><td class="xianshi">18</td></tr>
+    <tr><td class="one">李四</td><td class="xianshi">男</td><td class="xianshi">20</td></tr>
+</table>
+</body>
+<script>
+     var button = document.getElementById('button');
+    var one = document.getElementsByClassName('one');
+     var next1 = [];
+     var next_next = [];
+     var length = one.length;
+     for(var i=0;i<length;i++) {
+         next1[i] = one[i].nextElementSibling;
+         next_next[i] = next1[i].nextElementSibling;
+     }
+    function none_block() {
+        if(button.innerHTML=="隐藏") {
+            for(var i=0;i<length;i++) {
+                next1[i].style.display = 'none';
+                next_next[i].style.display = 'none';
+            }
+            button.innerHTML="显示"
+        }
+        else if(button.innerHTML=="显示") {
+            for(var i=0;i<length;i++) {
+                next1[i].style.display = 'inline-block';
+                next_next[i].style.display = 'inline-block';
+            }
+            button.innerHTML="隐藏"
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单</title>
+</head>
+<style>
+    div {
+        cursor: pointer;
+    }
+</style>
+<body>
+<div onclick="changeElment(this)">
+    菜单一
+</div>
+<div style="display: none" >
+    <div>
+        一
+    </div>
+    <div>
+        二
+    </div>
+    <div>
+        三
+    </div>
+</div>
+<div onclick="changeElment(this)">
+    菜单二
+</div>
+<div style="display: none">
+    <div>
+        一
+    </div>
+    <div>
+        二
+    </div>
+    <div>
+        三
+    </div>
+</div>
+<div onclick="changeElment(this)">
+    菜单三
+</div>
+<div style="display: none">
+    <div>
+        一
+    </div>
+    <div>
+        二
+    </div>
+    <div>
+        三
+    </div>
+</div>
+</body>
+<script>
+    var buffer;
+    function changeElment(element) {
+        var next = element.nextElementSibling;
+        if(buffer!=null&&next!=buffer)
+            buffer.style.display='none';
+        //获得当前节点的下一个节点
+        //让节点节点显示
+        // next.style.display='block';
+        if(next.style.display=="block") {
+            next.style.display='none';
+        }
+        else if(next.style.display=="none") {
+            next.style.display='block';
+        }
+        buffer = next;
+        // alert(next);
+    }
+</script>
+</html>

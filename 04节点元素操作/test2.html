@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+</head>
+<body>
+<div style="overflow: hidden;width:750px;height:500px;position: relative;margin: auto;background-color: deeppink;">
+    <h1  id="title" style="position: absolute; background-color: greenyellow;">标题</h1>
+</div>
+</body>
+<script>
+    var h1 = document.getElementById('title');
+    h1.style.left='50px';
+   console.log(h1.clientWidth) ;
+    console.log(h1.clientHeight) ;
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .imgMenu {
+            width: 100px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img onclick="changeImage(this)" class="imgMenu" src="../00images/05-1-small.jpg">
+        <img onclick="changeImage(this)" class="imgMenu"  src="../00images/05-2-small.jpg">
+        <img onclick="changeImage(this)" class="imgMenu" src="../00images/05-3-small.jpg">
+        <img onclick="changeImage(this)" class="imgMenu" src="../00images/05-4-small.jpg">
+    </div>
+    <img id="img" style="width: 400px;height: 300px;" src="../00images/05-1-small.jpg">
+
+</body>
+<script>
+    function changeImage(menuImage) {
+        var url = menuImage.src;
+        var img = document.getElementById('img');
+        img.src = url;
+    }
+</script>
+</html>

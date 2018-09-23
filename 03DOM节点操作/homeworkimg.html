@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片</title>
+    <style>
+        .center {
+            width: 990px;
+            margin: 0 auto;
+
+        }
+
+        .box {
+            width: 190px;
+            height: 280px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .box img {
+            width: 190px;
+            height: 190px;
+        }
+
+        .box .price {
+            font-weight: 400;
+            font-size: 20px;
+            color: #ff0036;
+            position: absolute;
+            left: 5px;
+        }
+
+        .box .introduce {
+            color: #666;
+            font-size: 14px;
+            position: absolute;
+            bottom: 1px;
+            height: 20px;
+            width: 180px;
+            left: 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="center">
+    <table id="table"></table>
+</div>
+
+</body>
+<script>
+    var infors=[
+        {img:'https://img.alicdn.com/bao/uploaded/i1/263817957/TB1yRjpsntYBeNjy1XdXXXXyVXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//0
+        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//1
+        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//2
+        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//3
+        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//4
+        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},//5
+        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'150.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'142.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'122.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/773610237/TB1wsA9rStYBeNjSspkXXbU8VXa_!!0-item_pic.jpg_b.jpg',price:'252.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i4/1047097629/TB1oJeLf_qWBKNjSZFxXXcpLpXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i3/TB1S_x7QpXXXXccXFXXXXXXXXXX_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/i2/1831112293/TB17EZSf7UmBKNjSZFOXXab2XXa_!!0-item_pic.jpg_b.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+        {img:'https://img.alicdn.com/bao/uploaded/TB1HXyMjcuYBuNkSmRySuwA3pXa.jpg',price:'152.00',introduce:'韩都衣舍2018韩版女装夏装新款雪纺短袖收腰长裙连衣裙OY6600焕'},
+    ];
+    var table = document.getElementById('table');
+    var length = 5;
+    var index = 0;
+    var tr = null;
+    infors.forEach(function (infor) {
+        if(index%length==0) {
+            tr = document.createElement('tr');
+            table.appendChild(tr);
+        }
+        var td = document.createElement('td');
+
+        td.innerHTML = "<div class='box'><img src='"+infor.img+"' /><p class='price'>"+infor.price+"</p><p class='introduce'>"+infor.introduce+"</p></div>";
+        var div = document.getElementsByClassName('box');
+        //div.innerHTML = "<";
+        tr.appendChild(td);
+        index++;
+    })
+</script>
+</html>

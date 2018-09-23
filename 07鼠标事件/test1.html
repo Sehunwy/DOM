@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="start()">
+    <div id="box" style="position: relative;width: 850px;height: 500px;background-color: lightpink;margin: auto;">
+        <img id="img" src="../00images/02-1.png" style="width: 50px;height: 50px;position: absolute;">
+    </div>
+
+</body>
+<script>
+    var box = document.getElementById('box');
+    var img = document.getElementById('img');
+    var dis = (document.body.clientWidth-850)/2;
+    box.onmousemove=function (ev) {
+        if(isMove){
+            var x = ev.clientX;
+            var y = ev.clientY;
+            startX = x;
+            startY = y;
+            img.style.left = x-25-dis+"px";
+            img.style.top = y-25+"px";
+        }
+    }
+
+    var isMove = false;
+
+    // img.onmousedown=function (ev) {
+    //     isMove = true;
+    // }
+    //
+    // img.onmouseup=function (ev) {
+    //     isMove = false;
+    // }
+
+    img.onclick=function (ev) {
+        if(!isMove) {
+            isMove = true;
+        }
+        else {
+            isMove = false;
+            state = JUMP;
+            //jump = true;
+            time = 0;
+        }
+    }
+
+    function start() {
+        setInterval('run()',100);
+    }
+
+
+    //起始坐标
+    var startX;
+    var startY;
+
+    var jump = false;
+
+    var JUMP = 0;
+    var RUN = JUMP+1;
+
+    var time = 0;
+    var  state = -1;
+
+    var speedX;
+    function run() {
+        switch (state) {
+            case JUMP:
+                time++;
+                    startY = startY+1/2*10*time*time;
+                    if(startY>450){
+                        state = RUN;
+                        //jump = false;
+                    img.style.top = 450+"px";
+
+                    var random = Math.floor(Math.random()*2) ;
+                    if(random==0) {
+                        speedX = -10;
+                    }
+                    else {
+                        speedX = 10;
+                    }
+                }
+                    else {
+                    img.style.top = startY+"px";
+
+                }
+
+                break;
+            case RUN:
+                startX = startX+speedX;
+                img.style.left = startX-dis+"px";
+                var random = Math.floor(Math.random()*100) ;
+                startY = 400+random;
+                img.style.top = startY+"px";
+
+                break;
+        }
+    }
+
+    //     if(jump) {
+    //         time++;
+    //         startY = startY+1/2*10*time*time;
+    //         if(startY>500){
+    //             jump = false;
+    //         img.style.top = 500+"px";
+    //     }
+    //         else {
+    //         img.style.top = startY+"px";
+    //
+    //     }
+    // }
+
+
+    // function mousedown() {
+    //     isMove = true;
+    // }
+    //
+    // function mouseup() {
+    //     isMove = false;
+    // }
+</script>
+</html>

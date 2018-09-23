@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="img" onmouseup="mouseup()" onmousedown="mousedown()" src="../00images/02-1.png" style="width: 50px;height: 50px;position: absolute;">
+
+<div id="box" style="top:500px;position: relative;width: 850px;height: 10px;background-color: lightpink;margin: auto;">
+</div>
+
+</body>
+<script>
+    var box = document.getElementById('box');
+    var img = document.getElementById('img');
+    document.body.onmousemove = function (ev) {
+        if(isMove) {
+            var x = ev.clientX;
+            var y = ev.clientY;
+            img.style.left = x+"px";
+            img.style.top = y+"px";
+        }
+
+    }
+
+    var isMove = false;
+
+
+    function mousedown() {
+        isMove = true;
+    }
+
+    function mouseup() {
+        isMove = false;
+    }
+</script>
+</html>

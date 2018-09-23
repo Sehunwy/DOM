@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单显示隐藏</title>
+    <style>
+        td {
+            width: 80px;
+            border:aqua 1px solid;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    var singers = new Array();
+    singers[0]={name:'荣泽荣',age:18,introduce:'荣泽荣荣泽荣荣泽荣'};
+    singers[1]={name:'荣泽荣',age:18,introduce:'荣泽荣荣泽荣荣泽荣'};
+    singers[2]={name:'荣泽荣',age:18,introduce:'荣泽荣荣泽荣荣泽荣'};
+
+    //创建table
+    var table = document.createElement('table');
+    document.body.appendChild(table);
+
+    //创建第一行tr
+    var tr = document.createElement('tr');
+    tr.innerHTML = "<td>姓名 <img onclick='showTable()' style='width: 25px;height: 25px;' src='../img/hide.jpg'> </td><td id='age0'>年龄</td><td class='introduce0'>介绍</td>";
+    table.appendChild(tr);
+
+    var index = 0;
+
+    singers.forEach(function (singer) {
+        index++;
+        //创建tr
+        var tr = document.createElement('tr');
+        tr.innerHTML = "<td>"+singer.name+"</td><td id='age"+index+"'>"+singer.age+"</td><td id='introduce"+index+"'>"+singer.introduce+"</td>";
+        table.appendChild(tr);
+    })
+
+    var show = true;
+
+    var length = singers.length;
+    function showTable() {
+        if (show) {
+            for (var i = 0; i <= length; i++) {
+                var ageId = "age" + i;
+                var introduceId = "introduce" + i;
+                var ageTd = document.getElementById(ageId);
+                var introduceTd = document.getElementById(introduceId);
+
+                ageTd.style.display = "none";
+                introduceTd.style.display = "none";
+                show = false;
+            }
+        }
+        else {
+            for (var i = 0; i <= length; i++) {
+                var ageId = "age" + i;
+                var introduceId = "introduce" + i;
+                var ageTd = document.getElementById(ageId);
+                var introduceTd = document.getElementById(introduceId);
+
+                ageTd.style.display = "";
+                introduceTd.style.display = "";
+                show = true;
+            }
+
+        }
+
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box" style="overflow: hidden; width: 300px;height: 300px;margin: auto;position: relative">
+        <!--<img src="./imgs/1.jpg" style="width: 400px;height: 300px; position: absolute">-->
+        <!--<img src="./imgs/2.jpg" style="width: 400px;height: 300px; position: absolute">-->
+        <!--<img src="./imgs/3.jpg" style="width: 400px;height: 300px; position: absolute">-->
+        <!--<img  src="./imgs/5.jpg" style="width: 400px;height: 300px; position: absolute">-->
+
+    </div>
+</body>
+<script>
+    //准备图片数据
+    var imgs = ['./imgs/1.jpg','./imgs/2.jpg','./imgs/3.jpg','./imgs/5.jpg'];
+    //获得容器
+    var box = document.getElementById('box');
+    var imgBox= [];
+    //根据图片创建img元素
+    var length = imgs.length;
+    for(var i=0;i<=length-1;i++) {
+        var img = document.createElement('img');
+        //设置相关的属性
+        img.style.width='300px';
+        img.style.height='300px';
+        img.src=imgs[i];
+        img.style.position="absolute";
+        var imgX = -300*i;
+        img.style.left = imgX+'px';
+        imgBox[i]={imgbox:img,imgboxX:imgX};
+
+        //图片放到盒子里
+        box.appendChild(img);
+    }
+    setInterval('run()',50);
+    function run() {
+        imgBox.forEach(function (box) {
+            box.imgboxX=box.imgboxX+5;
+            if(box.imgboxX>=300)
+                box.imgboxX=-3*300;
+            box.imgbox.style.left=box.imgboxX+'px';
+        })
+    }
+
+
+
+    // //获得图片元素
+    // var img = document.getElementById('img');
+    // //设置图片的坐标
+    // var imgX = 0;
+    // //启动计时事件
+    // setInterval('run()',50);
+    // function run() {
+    //     //更改移动坐标
+    //     imgX = imgX+10;
+    //     //更改图片移动坐标
+    //     img.style.left=imgX+"px";
+    //     if(imgX>400) {
+    //         imgX = -400;
+    //     }
+    // }
+</script>
+</html>

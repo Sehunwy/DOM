@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>优化轮播图</title>
+</head>
+<body>
+<div id="box" style="overflow: hidden;width: 400px; height: 300px;position: relative;margin: auto;background-color: lightpink;"></div>
+</body>
+<script>
+    //获取显示的盒子
+    var box = document.getElementById('box');
+    //设置图片地址
+    var imgs = ['../../00images/05-1-small.jpg','../../00images/05-2-small.jpg','../../00images/05-3-small.jpg','../../00images/05-4-small.jpg'];
+
+    //创建图片盒子
+    var imgBox = [];
+    //创建图片元素
+    var length = imgs.length;
+    for(var i=0;i<length;i++) {
+        //创建图片
+        var img = document.createElement('img');
+        //设置图片来源
+        img.src = imgs[i];
+        //设置位置
+        img.style.position = 'absolute';
+        //设置大小
+        img.style.width = '400px';
+        img.style.height='300px';
+        //设置左坐标
+        var imgX = -i*400;
+        imgBox[i] = {x:imgX,img1:img};
+        //设置坐标
+        imgBox[i].img1.style.left = imgBox[i].x+'px';
+        //把图片元素放到box中
+        box.appendChild(imgBox[i].img1);
+    }
+
+    //启动动画
+    setInterval('run()',100);
+    //创建图片的下标
+    var index = 1;
+    function run() {
+        //遍历数组
+        imgBox.forEach(function (box) {
+            //取得图片的坐标
+            box.x = box.x+10;
+            if(box.x>=400)
+                //box.x = -400*(imgBox.length-1);
+                //设置到最左边
+                box.x = -400;
+            //更换当前的图片
+            index++;
+            if(index>=length)
+                index=0;
+            box.img1.src=imgs[index];
+
+            //更改图片的坐标
+            box.img1.style.left = box.x+'px';
+        })
+    }
+</script>
+</html>
